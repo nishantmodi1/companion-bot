@@ -12,11 +12,6 @@ const CAT_META: Record<string, { icon: string; color: string; desc: string }> = 
   Professional: { icon: '💼', color: '#6366f1', desc: 'Career & growth'      },
   Wellness:     { icon: '🌿', color: '#06b6d4', desc: 'Health & mind'        },
 };
-
-/* ── CSS var injection for dynamic role colors ─────────────── */
-const rv = (r: RoleConfig) =>
-  ({ '--rc': r.color, '--rc1': r.g1, '--rc2': r.g2 } as React.CSSProperties);
-
 /* ── Recent chats helpers ──────────────────────────────────── */
 interface RecentEntry { roleId: string; userName: string; ts: number; }
 
