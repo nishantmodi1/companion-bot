@@ -4,7 +4,7 @@ import type { RoleConfig, GeminiPayload, GeminiResponse, HistoryEntry } from '..
 
 export const API_URL = '/api/chat';
 
-const isDev = import.meta.env.DEV;
+// const isDev = import.meta.env.DEV;
 
 // export const API_URL = isDev
 //   ? `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`
