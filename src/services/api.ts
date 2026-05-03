@@ -2,16 +2,14 @@ import type { RoleConfig, GeminiPayload, GeminiResponse, HistoryEntry } from '..
 
 // ─── CONFIG ──────────────────────────────────────────────────
 
-// export const API_URL =
-  // `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${process.env.GEMINI_API_KEY}`;
-  const GEMINI_API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
-  
-if (!GEMINI_API_KEY) {
-  throw new Error('Missing VITE_GEMINI_API_KEY in environment variables');
-}
+// export const API_URL = '/api/chat';
+// export const API_URL = `${import.meta.env.BASE_URL}api/chat`.replace(/\/+/g, '/');
 
-export const API_URL =
-  `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${GEMINI_API_KEY}`;
+const isDev = import.meta.env.DEV;
+
+export const API_URL = isDev
+  ? `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`
+  : `${import.meta.env.BASE_URL}api/chat`.replace(/\/+/g, '/');
 
 const DEFAULT_MAX_TOKENS = 1500;
 const MAX_HISTORY_ENTRIES = 20;
@@ -56,9 +54,11 @@ function extractReplyText(
 ): string | null {
   if (!parts.length) return null;
   const cleanParts = parts.filter(p => p.text?.trim() && !p.thoughtSignature);
-  if (cleanParts.length > 0) return cleanParts[cleanParts.length - 1].text!.trim();
+  const lastClean = cleanParts[cleanParts.length - 1];
+  if (lastClean?.text) return lastClean.text.trim();
   const anyParts = parts.filter(p => p.text?.trim());
-  if (anyParts.length > 0) return anyParts[anyParts.length - 1].text!.trim();
+  const lastAny = anyParts[anyParts.length - 1];
+  if (lastAny?.text) return lastAny.text.trim();
   return null;
 }
 

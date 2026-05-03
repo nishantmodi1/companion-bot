@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, useCallback, type KeyboardEvent, type ChangeEvent } from 'react';
+import { useState, useRef, useEffect, useCallback, type KeyboardEvent, type ChangeEvent } from 'react';
 import { useNavigate, useParams, useLocation, Navigate } from 'react-router-dom';
 import type { Message, HistoryEntry } from '../types/types';
 import { getRoleById } from '../role/roles';

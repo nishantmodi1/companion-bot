@@ -1,9 +1,9 @@
-import React from 'react';
+import type { FC } from 'react';
 import type { Message, RoleConfig } from '../types/types';
 
 interface Props { message: Message; role: RoleConfig; userName: string; }
 
-const MessageBubble: React.FC<Props> = ({ message, role, userName }) => {
+const MessageBubble: FC<Props> = ({ message, role, userName }) => {
   const isUser = message.role === 'user';
 
   return (

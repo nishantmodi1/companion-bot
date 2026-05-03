@@ -1,4 +1,3 @@
-import React from 'react';
 import type { RoleConfig } from '../types/types';
 
 const TypingIndicator: React.FC<{ role: RoleConfig }> = ({ role }) => (
