@@ -11,7 +11,7 @@ if (!root) throw new Error('Root element not found');
 createRoot(root).render(
   <StrictMode>
     <HelmetProvider>
-      <BrowserRouter basename="/companion-chat/">
+      <BrowserRouter basename="/">
         <App />
       </BrowserRouter>
     </HelmetProvider>

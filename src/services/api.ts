@@ -2,14 +2,13 @@ import type { RoleConfig, GeminiPayload, GeminiResponse, HistoryEntry } from '..
 
 // ─── CONFIG ──────────────────────────────────────────────────
 
-// export const API_URL = '/api/chat';
-// export const API_URL = `${import.meta.env.BASE_URL}api/chat`.replace(/\/+/g, '/');
+export const API_URL = '/api/chat';
 
 const isDev = import.meta.env.DEV;
 
-export const API_URL = isDev
-  ? `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`
-  : `${import.meta.env.BASE_URL}api/chat`.replace(/\/+/g, '/');
+// export const API_URL = isDev
+//   ? `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${import.meta.env.VITE_GEMINI_API_KEY}`
+//   : `${import.meta.env.BASE_URL}api/chat`.replace(/\/+/g, '/');
 
 const DEFAULT_MAX_TOKENS = 1500;
 const MAX_HISTORY_ENTRIES = 20;
